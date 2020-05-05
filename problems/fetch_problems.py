@@ -13,3 +13,7 @@ for problem_id in range(1, 714):
         with open('./problem_{}.md'.format(problem_id), 'w+') as f:
             f.write(response.text)
             f.close()
+
+        with open('../README.md', 'a') as f:
+            f.write(
+                '<p>[Problem {}](./problems/problem_{}.md)</p>'.format(problem_id, problem_id))
