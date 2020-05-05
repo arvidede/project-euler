@@ -14,6 +14,6 @@ for problem_id in range(1, 714):
             f.write(response.text)
             f.close()
 
-        with open('../README.md', 'a') as f:
-            f.write(
-                '<p>[Problem {}](./problems/problem_{}.md)</p>'.format(problem_id, problem_id))
+    with open('../README.md', 'a') as f:
+        f.write(
+            '[Problem {}](./problems/problem_{}.md)\n\n'.format(problem_id, problem_id))
