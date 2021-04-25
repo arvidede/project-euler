@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import requests
 import os
+from functools import reduce
 
 
 def submit(problem):
@@ -26,3 +27,15 @@ def prime_factors(n):
         k += 1
 
     return factors
+
+
+def gcd(a, b):
+    while b != 0:
+        prev_b = b
+        b = a % b
+        a = prev_b
+    return a
+
+
+def multiply(list_):
+    return reduce(lambda a, b: int(a)*int(b), list_)
