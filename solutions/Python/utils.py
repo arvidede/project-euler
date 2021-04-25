@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import requests
 import os
 from functools import reduce
+from math import factorial
 
 
 def submit(problem):
@@ -15,16 +16,34 @@ def submit(problem):
         print("Why are you even trying?")
 
 
+# https://en.wikipedia.org/wiki/Primality_test#Simple_methods
+def is_prime(n):
+    """Primality test using 6k+-1 optimization."""
+    if n <= 3:
+        return n > 1
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i ** 2 <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+
 def prime_factors(n):
     factors = []
     k = 2
 
-    while n >= k:
+    while n > k:
         if n % k == 0:
             factors.append(k)
             n = n / k
             continue
         k += 1
+
+    if k == n:
+        factors.append(n)
 
     return factors
 
@@ -39,3 +58,7 @@ def gcd(a, b):
 
 def multiply(list_):
     return reduce(lambda a, b: int(a)*int(b), list_)
+
+
+def read_number_grid(grid_string):
+    return [[int(cell) for cell in line.split(' ')] for line in grid_string.split('\n')]
