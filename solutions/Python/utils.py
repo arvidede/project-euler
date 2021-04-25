@@ -3,6 +3,7 @@ import requests
 import os
 from functools import reduce
 from math import factorial
+from collections import Counter
 
 
 def submit(problem):
@@ -66,3 +67,9 @@ def parse_number_grid(grid_string):
 
 def flatten(list_):
     return [item for sublist in list_ for item in sublist]
+
+
+def number_of_factors(n):
+    primes = prime_factors(n)
+    occurences = Counter(primes)
+    return product([occurences[key] + 1 for key in occurences])
