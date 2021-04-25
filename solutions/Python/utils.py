@@ -62,3 +62,7 @@ def product(list_):
 
 def parse_number_grid(grid_string):
     return [[int(cell) for cell in line.split(' ')] for line in grid_string.split('\n')]
+
+
+def flatten(list_):
+    return [item for sublist in list_ for item in sublist]
