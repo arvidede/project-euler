@@ -7,7 +7,7 @@
 # 500 % (m | n | k) = 0
 # abc = k^3 * 2m * (m^4 - n^4)
 
-from utils import prime_factors, multiply, gcd
+from utils import prime_factors, product, gcd
 from itertools import combinations
 from collections import namedtuple
 
@@ -18,7 +18,7 @@ def euclid_pythagorean_triple():
     all_combinations = set([1])  # Not returned as a prime
 
     for i in range(1, len(primes) + 1):
-        all_combinations.update([multiply(tuple_)
+        all_combinations.update([product(tuple_)
                                  for tuple_ in combinations(primes, i)])
 
     valid_set = sorted(all_combinations)

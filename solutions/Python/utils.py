@@ -56,9 +56,9 @@ def gcd(a, b):
     return a
 
 
-def multiply(list_):
+def product(list_):
     return reduce(lambda a, b: int(a)*int(b), list_)
 
 
-def read_number_grid(grid_string):
+def parse_number_grid(grid_string):
     return [[int(cell) for cell in line.split(' ')] for line in grid_string.split('\n')]
