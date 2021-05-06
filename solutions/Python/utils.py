@@ -88,3 +88,7 @@ def factorial(n: int) -> Generator[int, None, None]:
     while i < n:
         i, prev = i + 1, prev * (i + 1)
     yield prev
+
+
+def divisors(n):
+    return [k for k in range(1, n) if n % k == 0]
