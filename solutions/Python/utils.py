@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import requests
 import os
 from functools import reduce
-from math import factorial
 from collections import Counter
 from typing import Generator
 
@@ -33,7 +32,7 @@ def is_prime(n: int) -> bool:
     return True
 
 
-def prime_factors(n: int) -> list:
+def prime_factors(n: int) -> list[int]:
     factors = []
     k = 2
 
@@ -66,7 +65,7 @@ def parse_number_grid(grid_string):
     return [[int(cell) for cell in line.split(' ')] for line in grid_string.split('\n')]
 
 
-def flatten(list_) -> list:
+def flatten(list_) -> List:
     return [item for sublist in list_ for item in sublist]
 
 
@@ -90,5 +89,15 @@ def factorial(n: int) -> Generator[int, None, None]:
     yield prev
 
 
-def divisors(n):
+def divisors(n: int) -> list[int]:
     return [k for k in range(1, n) if n % k == 0]
+
+
+# https://code.activestate.com/recipes/252178/
+def permutations(nums: list[int]) -> list[int]:
+    if len(nums) <= 1:
+        yield nums
+    else:
+        for perm in permutations(nums[1:]):
+            for i in range(len(perm) + 1):
+                yield perm[:i] + nums[0:1] + perm[i:]
