@@ -65,7 +65,7 @@ def parse_number_grid(grid_string):
     return [[int(cell) for cell in line.split(' ')] for line in grid_string.split('\n')]
 
 
-def flatten(list_) -> List:
+def flatten(list_) -> list:
     return [item for sublist in list_ for item in sublist]
 
 
@@ -101,3 +101,10 @@ def permutations(nums: list[int]) -> list[int]:
         for perm in permutations(nums[1:]):
             for i in range(len(perm) + 1):
                 yield perm[:i] + nums[0:1] + perm[i:]
+
+
+def fibonacci(n):
+    f_n_1, f_n = 0, 1
+    for i in range(n):
+        yield f_n
+        f_n_1, f_n = f_n, f_n_1 + f_n
