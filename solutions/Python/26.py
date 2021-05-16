@@ -11,7 +11,7 @@ def reciprocal_cycle(d):
         i += 1
 
 
-# Too avoid infinite loops
+# To avoid infinite loops
 primes = [p for p in range(1000) if is_prime(p)][3:]
 max_d = (0, 0)
 
