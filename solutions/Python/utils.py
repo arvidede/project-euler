@@ -57,6 +57,10 @@ def gcd(a: int, b: int) -> int:
     return a
 
 
+def lcm(a: int, b: int) -> int:
+    return abs(a * b) // gcd(a, b)
+
+
 def product(list_: list) -> int:
     return reduce(lambda a, b: int(a)*int(b), list_, 1)
 
