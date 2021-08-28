@@ -116,3 +116,9 @@ def fibonacci(n):
 
 def ints_to_int(ints: [int]) -> int:
     return int("".join([str(n) for n in ints]))
+
+
+def rotations(num: int) -> [int]:
+    num = str(num)
+    for i in range(len(num)):
+        yield int(num[i:] + num[:i])
