@@ -6,15 +6,15 @@ from collections import Counter
 from typing import Generator
 
 
-def submit(problem):
+def submit(problem, answer):
     load_dotenv()
     url = f'https://projecteuler.net/problem={problem}'
     response = requests.post(
-        url, cookies={'PHPSESSID': os.getenv('SESSION_COOKIE')})
+        url, json={'answer': answer}, cookies={'PHPSESSID': os.getenv('SESSION_COOKIE')})
     if response.status_code == 200:
-        print('Believe it or not, but that is actually correct. Lucky guess.')
+        return 'Believe it or not, but that is actually correct. Lucky guess.'
     else:
-        print("Why are you even trying?")
+        return "Why are you even trying?"
 
 
 # https://en.wikipedia.org/wiki/Primality_test#Simple_methods
@@ -108,3 +108,7 @@ def fibonacci(n):
     for i in range(n):
         yield f_n
         f_n_1, f_n = f_n, f_n_1 + f_n
+
+
+def ints_to_int(ints: [int]) -> int:
+    return int("".join([str(n) for n in ints]))
