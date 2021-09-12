@@ -9,11 +9,12 @@ from dotenv import load_dotenv
 
 def submit(problem, answer):
     load_dotenv()
-    url = f'https://projecteuler.net/problem={problem}'
+    url = f"https://projecteuler.net/problem={problem}"
     response = requests.post(
-        url, json={'answer': answer}, cookies={'PHPSESSID': os.getenv('SESSION_COOKIE')})
+        url, json={"answer": answer}, cookies={"PHPSESSID": os.getenv("SESSION_COOKIE")}
+    )
     if response.status_code == 200:
-        return 'Believe it or not, but that is actually correct. Lucky guess.'
+        return "Believe it or not, but that is actually correct. Lucky guess."
     else:
         return "Why are you even trying?"
 
@@ -63,11 +64,11 @@ def lcm(a: int, b: int) -> int:
 
 
 def product(list_: list) -> int:
-    return reduce(lambda a, b: int(a)*int(b), list_, 1)
+    return reduce(lambda a, b: int(a) * int(b), list_, 1)
 
 
 def parse_number_grid(grid_string):
-    return [[int(cell) for cell in line.split(' ')] for line in grid_string.split('\n')]
+    return [[int(cell) for cell in line.split(" ")] for line in grid_string.split("\n")]
 
 
 def flatten(list_) -> list:
@@ -123,3 +124,8 @@ def rotations(num: int) -> list[int]:
     num = str(num)
     for i in range(len(num)):
         yield int(num[i:] + num[:i])
+
+
+def argmax(nums: list[int]) -> int:
+    f = lambda i: nums[i]
+    return max(range(len(nums)), key=f)
