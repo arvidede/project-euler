@@ -1,9 +1,10 @@
-from dotenv import load_dotenv
-import requests
 import os
-from functools import reduce
 from collections import Counter
+from functools import reduce
 from typing import Generator
+
+import requests
+from dotenv import load_dotenv
 
 
 def submit(problem, answer):
@@ -114,11 +115,11 @@ def fibonacci(n):
         f_n_1, f_n = f_n, f_n_1 + f_n
 
 
-def ints_to_int(ints: [int]) -> int:
+def ints_to_int(ints: list[int]) -> int:
     return int("".join([str(n) for n in ints]))
 
 
-def rotations(num: int) -> [int]:
+def rotations(num: int) -> list[int]:
     num = str(num)
     for i in range(len(num)):
         yield int(num[i:] + num[:i])
