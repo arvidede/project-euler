@@ -34,6 +34,30 @@ def is_prime(n: int) -> bool:
     return True
 
 
+def check_primality():
+    cache = {}
+
+    def check_primality_(n):
+        if n in cache:
+            return cache.get(n)
+        n_is_prime = is_prime(n)
+        cache[n] = n_is_prime
+        return n_is_prime
+    return check_primality_
+
+
+def generate_primes(n: int) -> list[int]:
+    """
+    Sieve of Eratosthenes: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+    Source: https://stackoverflow.com/a/3035188
+    """
+    sieve = [True] * n
+    for i in range(3, int(n**0.5)+1, 2):
+        if sieve[i]:
+            sieve[i*i::2*i] = [False]*((n-i*i-1)//(2*i)+1)
+    return [2] + [i for i in range(3, n, 2) if sieve[i]]
+
+
 def prime_factors(n: int) -> list[int]:
     factors = []
     k = 2
@@ -127,5 +151,13 @@ def rotations(num: int) -> list[int]:
 
 
 def argmax(nums: list[int]) -> int:
-    f = lambda i: nums[i]
+    def f(i): return nums[i]
     return max(range(len(nums)), key=f)
+
+
+def is_pandigital(n: int) -> bool:
+    n_str = str(n)
+    n_set = set(n_str)
+    return "0" not in n_set \
+        and len(n_set) == len(n_str) \
+        and len(n_set) == int(max(n_set))
